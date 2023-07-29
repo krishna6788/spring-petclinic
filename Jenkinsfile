@@ -1,8 +1,6 @@
 pipeline {
     agent { label 'LINUX'}
-    parameters {
-        string(name:'MAVEN_GOAL', defaultValue: 'package', description: 'maven goal')
-    }
+    
     stages {
         stage('Version Control System') {
             steps {
