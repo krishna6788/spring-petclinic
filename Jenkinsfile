@@ -9,18 +9,14 @@ pipeline {
 
             }
         }
-        stage('Build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
+        
         
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('Sonar')
-                sh 'mvn clean install sonar:sonar -Dsonar.organization=spc-decl -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=ad034bdbcdc6f595e63a69b0a0bf57a19c956b4f -Dsonar.projectKey=spc-decl'
+                    sh 'mvn clean package sonar:sonar -Dsonar.organization=spc-decl -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=ad034bdbcdc6f595e63a69b0a0bf57a19c956b4f -Dsonar.projectKey=spc-decl'
             }
-    }
+        }
         stage('Post Build') {
             steps {
                 archiveArtifacts artifacts: '**/target/spring-*.jar',
