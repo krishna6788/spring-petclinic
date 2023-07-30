@@ -13,7 +13,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('Sonar')
-                sh 'mvn clean install sonar:sonar -Dsonar.organization=spc-decl -Dsonar.token=1316fa3ba82b3fa5d6f3544ac726bed4aa26d542 -Dsonar.projectKey=spc-decl'
+                sh 'mvn clean install sonar:sonar -Dsonar.organization=spc-decl -Dsonar.token="ad034bdbcdc6f595e63a69b0a0bf57a19c956b4f" -Dsonar.projectKey=spc-decl'
             }
     }
         stage('Post Build') {
